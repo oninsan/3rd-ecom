@@ -1,0 +1,111 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    {% if title %}
+      <title>{{ title }}</title>
+   <!--  {% else %}
+      <title>Bluewave</title> -->
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script type="text/javascript" src="{% static 'travel/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'travel/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'travel/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'travel/icons/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'travel/icons/fontello/css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'travel/css/style.css' %}">
+
+    <style type="text/css">
+      /*fonts here*/
+      @font-face{
+        font-family: "arcon";
+        src: url('{% static 'travel/fonts/arcon/Arcon-Regular.otf' %}');
+        font-style: normal;
+      }
+
+      body{
+        font-family: "arcon";
+      }
+
+    </style>
+      <script type="text/javascript">
+        let user ='{{ request.user }}'
+      
+        function getToken(name){
+          var cookieValue = null;
+          if(document.cookie && document.cookie !== ""){
+            var cookies = document.cookie.split(";");
+            for(var i=0; i<cookies.length; i++){
+              var cookie = cookies[i].trim();
+              if(cookie.substring(0,name.length + 1) === (name + "=")){
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+      
+      var csrftoken = getToken('csrftoken');
+
+      function getCookie(name){
+        var cookieArr = document.cookie.split(";");
+
+        for(var i; i<cookieArr.length; i++){
+          var cookiePair = cookieArr[i].split("=")
+          if(name == cookiePair[0].trim()){
+            return decodeURIComponent(cookiePair[1]);
+          }
+        }
+        return null
+      }
+      var booking = JSON.parse(getCookie('booking'))
+      if(booking == undefined){
+        booking = {}
+        console.log('booking was created')
+        document.cookie = 'booking=' + JSON.stringify(booking)
+      }
+      console.log('Booking:', booking)
+    
+    </script>
+  </head>
+  <body>
+    <!-- Nav Part -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand text-clr" href="{% url 'travel-home' %}"><i class="fa fa-water"></i> BLUEWave</a>
+      <button class="navbar-toggler bg-outline-success" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-clr" href="#">About<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          
+    <!-- /Nav Part -->
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+
+    <div class="footer mb-3">
+      <p>All rights reserved &copy; 2020-2021</p>
+      <ul>
+        <li><p>Follow us on: </p></li>
+        <li><a href="#" style="color: #1877f2;"><i class="icon icon-facebook-squared"></i></a></li>
+        <li><a href="#" style="color: #1da1f2;"><i class="icon icon-twitter-squared"></i></a></li>
+      </ul>
+    </div>
+
+    <!-- /Footer -->
+    <script type="text/javascript" src="{% static 'travel/js/jScript.js' %}"></script>
+  </body>
+</html> 

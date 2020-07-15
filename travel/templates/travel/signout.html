@@ -1,0 +1,25 @@
+{% extends "travel/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="d-inline my-2 my-lg-0">
+          <a class="btn btn-danger text-clr" href="{% url 'travel-sign-up' %}"><i class="fa fa-sign-in-alt"></i> Sign up</a>
+          <button class="btn btn-light" id="up-bt" style="display: none;"><i class="fa fa-arrow-up text-danger"></i></button>
+      </div>
+    </div>
+  </nav>
+  <!-- /nav -->
+
+
+  <div class="container mt-5 mb-5">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-1 font-weight-bold">You have been signed out!</h1>
+        </div>
+        <a href="{% url 'travel-sign-in' %}"><p class="form-text">Login again?</p></a>
+        <!-- <div class="col-lg-8 col-md-12 col-sm-12 background rounded">
+          
+        </div> -->
+      </div>
+    </div>
+{% endblock content %}

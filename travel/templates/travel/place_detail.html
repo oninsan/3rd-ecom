@@ -1,0 +1,152 @@
+{% extends "travel/base.html" %}
+{% load static %}
+
+{% block content %}
+          {% if user.is_authenticated %}
+            <div class="d-lg-inline d-md-block my-2 my-lg-0">
+              <span class="btn btn-outline-light mr-lg-2"><h5 class="d-inline"><i class="fa fa-user-circle"></i>{{ user.username }}</h5></span>
+            </div>
+            <div class="d-inline my-2 my-lg-0">
+              <a class="btn btn-danger text-clr" href="{% url 'travel-sign-out' %}"><i class="fa fa-sign-out-alt"></i> Sign out</a>
+          {% else %}
+            <a class="btn btn-danger text-clr" href="{% url 'travel-sign-in' %}"><i class="fa fa-sign-in-alt"></i> Sign in</a>
+          {% endif %}
+          <button class="btn btn-light ml-1" id="up-bt" style="display: none;"><i class="fa fa-arrow-up text-danger"></i></button>
+      </div>
+    </div>
+  </nav>
+  <!-- /nav -->
+<!-- Detail Part -->
+
+  <div class="container mb-5" style="margin-top: 5em;">
+    <div class="row wow">
+      <div class="col-lg-7 col-sm-12 col-md-12 mb-3 mt-2 shadow-lg rounded" style="display: flex; align-items: center; flex-wrap: wrap;">
+        <img src="{{ object.imgURL }}" class="img-fluid rounded shadow-lg mt-2 mb-2" alt="Image failed to load">
+      </div>
+      <div class="col-lg-5 col-sm-12 col-md-12 shadow-lg mb-3 mt-2 rounded">
+        <div class="container mt-3">
+          <div class="row">
+            <div class="col-lg-6 breadcrumb">
+              <strong><h2 class="title pt-2">{{ object.destination }}</h2></strong>
+            </div>
+            <div class="col-lg-6 breadcrumb">
+              <h5 class="text-center pt-3">Booking: <span class="badge badge-light badge-pill"><small class="font-weight-bold">Php {{ object.booking_price|floatformat:2 }}</small></span></h5>
+            </div>
+            </div>
+          </div>
+        <div class="container text-center font-style-italic">
+          <p><lead>"{{ object.description }}"</lead></p>
+        </div>
+        <div class="container" style="margin-top: 0px !important;">
+          <form class="form-group form-signin" id="form">
+            <fieldset>
+              <span class="breadcrumb"><legend class="text-center">Book now</legend></span>
+              {% if user.is_authenticated %}
+                <input type="text" name="faddress" placeholder="Full Adress" class="form-control mb-2" required>
+                <input type="text" name="zipcode" placeholder="zipcode" class="form-control mb-2" required>
+                <label class="mr-3 font-weight-bold" for="bookingDate">Travel schedule:</label>
+                <input type="date" id="bookingDate" name="date" class="form-control mb-2" required>
+              {% else %}
+                <input type="text" name="fname" placeholder="First Name" class="form-control mb-2" required>
+                <input type="text" name="lname" placeholder="Last Name" class="form-control mb-2" required>
+                <input type="email" name="email" placeholder="Email" class="form-control mb-2" required>
+                <input type="text" name="faddress" placeholder="Full Adress" class="form-control mb-2" required>
+                <input type="text" name="zipcode" placeholder="zipcode" class="form-control mb-2" required>
+                <label class="mr-3 font-weight-bold" for="bookingDate">Travel schedule:</label>
+                <input type="date" id="bookingDate" name="date" class="form-control mb-2" required>
+              {% endif %}
+        
+              <button type="submit d-flex justify-content-left" class="btn btn-outline-danger d-flex" id="submit" style="display: none !important;">Book now</button>
+              <div class="container mb-3 d-flex justify-content-center">
+                <div class="row">
+                  <div class="col-6">
+                    <button id="dummypay" class="btn btn-success">DummyPayRa</button>
+                  </div>
+                  <div class="col-6">
+                    <button id="paypal" class="btn btn-primary"><i class="icon-paypal disabled"></i>PayPal</button>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+          
+      </div>
+
+    </div>
+  </div>
+
+   <script type="text/javascript">
+
+     let form = document.querySelector('#form')
+
+     $('#form').submit(function(e){
+      e.preventDefault()
+      $('#dummypay').css('display','none')
+      $('#paypal').css('display','none')
+      $('#submit').fadeIn()
+     })
+
+     document.querySelector('#submit').addEventListener('click', function(e){
+      e.preventDefault()
+      submitFormData()
+     })
+     function submitFormData(){
+      console.log('Payment button clicked')
+
+      let userFormData = {
+        'fname':null,
+        'lname':null,
+      }
+
+      let customerInfo = {
+        'email':null,
+        'faddress':null,
+        'destination':null,
+        'zipcode':null,
+        'bookingDate':null
+      }
+
+      
+      if(user == 'AnonymousUser'){
+        customerInfo.email = form.email.value
+        customerInfo.faddress = form.faddress.value
+        customerInfo.zipcode = form.zipcode.value
+        customerInfo.bookingDate = form.bookingDate.value
+        customerInfo.destination = '{{ object.destination }}'
+        userFormData.fname = form.fname.value
+        userFormData.lname = form.lname.value
+      }else{
+        customerInfo.email = '{{ user.email }}'
+        customerInfo.faddress = form.faddress.value
+        customerInfo.zipcode = form.zipcode.value
+        customerInfo.bookingDate = form.bookingDate.value
+        customerInfo.destination = '{{ object.destination }}'
+        userFormData.fname = '{{ user.first_name }}'
+        userFormData.lname = '{{ user.last_name }}'
+      }
+
+      let url = '/process_order/'
+      fetch(url,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken
+        },
+        body:JSON.stringify({'form':userFormData, 'customer':customerInfo})
+      })
+      .then((response)=>{
+        return response.json()
+      })
+      .then((data)=>{
+        console.log('Success', data);
+        alert('Transaction Completed');
+
+        booking = {}
+        document.cookie = 'booking=' + JSON.stringify(booking) + ";domain=;path=/"
+        window.location.href = "{% url 'travel-home' %}"
+      })
+     }
+  </script>
+
+    <!-- /Detail Part -->
+{% endblock content %}

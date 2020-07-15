@@ -1,0 +1,39 @@
+{% extends "travel/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+	        {% if user.is_authenticated %}
+            <div class="d-lg-inline d-md-block my-2 my-lg-0">
+              <span class="badge badge-light badge-pill mr-lg-2"><h5 class="d-inline"><i class="fa fa-user-circle"></i>{{ user.username }}</h5></span>
+            </div>
+            <div class="d-inline my-2 my-lg-0">
+              <a class="btn btn-danger text-clr" href="{% url 'travel-sign-out' %}"><i class="fa fa-sign-out-alt"></i> Sign out</a>
+          {% else %}
+            <a class="btn btn-danger text-clr" href="{% url 'travel-sign-in' %}"><i class="fa fa-sign-in-alt"></i> Sign in</a>
+          {% endif %}
+          <button class="btn btn-light ml-1" id="up-bt" style="display: none;"><i class="fa fa-arrow-up text-danger"></i></button>
+      </div>
+    </div>
+  </nav>
+  <!-- /nav -->
+
+  <div class="container login-section mt-5 mb-5">
+      <div class="row">
+        <div class="col-12">
+          <form class="form-signin signup" style="margin-top: 25px;" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal form-text">Sign up now</h1>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <a href="{% url 'travel-sign-in' %}"><p class="form-text">Already have an account?</p></a>
+            <button class="btn btn-lg btn-dark btn-block text-clr" style="background-color: #183f8c;" type="submit"><i class="fa fa-sign-in-alt"></i> Sign up</button>
+            <p class="mt-5 mb-3 form-text">&copy; 2020-2021</p>
+          </form>
+        </div>
+
+       <!--  <div class="col-sm-12 col-md-12 col-lg-8 rounded background">
+
+        </div> -->
+      </div>
+    </div>
+{% endblock content %}
