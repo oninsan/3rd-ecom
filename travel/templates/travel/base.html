@@ -6,8 +6,8 @@
     <!-- Required meta tags -->
     {% if title %}
       <title>{{ title }}</title>
-   <!--  {% else %}
-      <title>Bluewave</title> -->
+    {% else %}
+       <title>Sign in</title>
     {% endif %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,46 +33,46 @@
       }
 
     </style>
-      <script type="text/javascript">
-        let user ='{{ request.user }}'
-      
-        function getToken(name){
-          var cookieValue = null;
-          if(document.cookie && document.cookie !== ""){
-            var cookies = document.cookie.split(";");
-            for(var i=0; i<cookies.length; i++){
-              var cookie = cookies[i].trim();
-              if(cookie.substring(0,name.length + 1) === (name + "=")){
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-              }
+    <script type="text/javascript">
+      let user ='{{ request.user }}'
+    
+      function getToken(name){
+        var cookieValue = null;
+        if(document.cookie && document.cookie !== ""){
+          var cookies = document.cookie.split(";");
+          for(var i=0; i<cookies.length; i++){
+            var cookie = cookies[i].trim();
+            if(cookie.substring(0,name.length + 1) === (name + "=")){
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
             }
           }
-          return cookieValue;
         }
-      
-      var csrftoken = getToken('csrftoken');
-
-      function getCookie(name){
-        var cookieArr = document.cookie.split(";");
-
-        for(var i; i<cookieArr.length; i++){
-          var cookiePair = cookieArr[i].split("=")
-          if(name == cookiePair[0].trim()){
-            return decodeURIComponent(cookiePair[1]);
-          }
-        }
-        return null
+        return cookieValue;
       }
-      var booking = JSON.parse(getCookie('booking'))
-      if(booking == undefined){
-        booking = {}
-        console.log('booking was created')
-        document.cookie = 'booking=' + JSON.stringify(booking)
-      }
-      console.log('Booking:', booking)
     
-    </script>
+    var csrftoken = getToken('csrftoken');
+
+    function getCookie(name){
+      var cookieArr = document.cookie.split(";");
+
+      for(var i; i<cookieArr.length; i++){
+        var cookiePair = cookieArr[i].split("=")
+        if(name == cookiePair[0].trim()){
+          return decodeURIComponent(cookiePair[1]);
+        }
+      }
+      return null
+    }
+    var booking = JSON.parse(getCookie('booking'))
+    if(booking == undefined){
+      booking = {}
+      console.log('booking was created')
+      document.cookie = 'booking=' + JSON.stringify(booking)
+    }
+    console.log('Booking:', booking)
+  
+  </script>
   </head>
   <body>
     <!-- Nav Part -->

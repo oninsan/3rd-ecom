@@ -26,13 +26,13 @@ $(".signup label").detach()
 $(".signup br").detach()
 $(".signup #error_1_id_first_name").detach()
 $(".signup #error_1_id_last_name").detach()
-$(".signup #error_1_id_password1").detach()
-$(".signup #error_1_id_password2").detach()
-$(".signup #error_1_id_email").detach()
-$(".signup #error_1_id_username").detach()
+//$(".signup #error_1_id_password1").detach()
+//$(".signup #error_1_id_password2").detach()
+//$(".signup #error_1_id_email").detach()
+//$(".signup #error_1_id_username").detach()
 $(".signup #hint_id_password2").detach()
 $(".signup #hint_id_username").detach()
-$(".errorlist li").addClass("fa fa-info-circle text-warning shadow-lg")
+//$(".errorlist li").addClass("fa fa-info-circle text-warning shadow-lg")
 $(".signup #id_username").attr("placeholder","Username")
 $(".signup #id_first_name").attr("autofocus","")
 $(".signup #id_username").removeAttr("autofocus")
@@ -40,13 +40,41 @@ $(".signup #id_email").attr("placeholder","Email")
 $(".signup #id_password1").attr("placeholder","Password")
 $(".signup #id_password2").attr("placeholder","Confirm Password")
 
-// $(".signup button").click(function(e){
-// 	e.preventDefault()
-// 	if(document.querySelector("#id_password1").length != document.querySelector("#id_password2").length){
-// 		alert("Password not match")
-// 	}
-// })
-// /Signup part
+//webview
+$(window).mouseenter(function(e){
+    $(".signup #error_1_id_password1").detach()
+    $(".signup #error_1_id_password2").detach()
+    $(".signup #error_1_id_password3").detach()
+
+    $(".signup #error_2_id_password1").detach()
+    $(".signup #error_2_id_password2").detach()
+    $(".signup #error_2_id_password3").detach()
+
+    $(".signup #error_3_id_password1").detach()
+    $(".signup #error_3_id_password2").detach()
+    $(".signup #error_3_id_password3").detach()
+
+    $(".signup #error_1_id_email").detach()
+    $(".signup #error_1_id_username").detach()
+})
+
+//mobile view
+$(window).click(function(e){
+    $(".signup #error_1_id_password1").detach()
+    $(".signup #error_1_id_password2").detach()
+    $(".signup #error_1_id_password3").detach()
+
+    $(".signup #error_2_id_password1").detach()
+    $(".signup #error_2_id_password2").detach()
+    $(".signup #error_2_id_password3").detach()
+
+    $(".signup #error_3_id_password1").detach()
+    $(".signup #error_3_id_password2").detach()
+    $(".signup #error_3_id_password3").detach()
+
+    $(".signup #error_1_id_email").detach()
+    $(".signup #error_1_id_username").detach()
+})
 
 // sign_in part
 $(".signin input").addClass("form-control mb-3")
