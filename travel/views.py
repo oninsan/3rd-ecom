@@ -44,11 +44,13 @@ class SearchView(ListView):
 
 def register(request):
 	form = UserRegisterForm(request.POST)
-	if form.is_valid():
-		form.save()
-		username = form.cleaned_data.get('username')
-		return redirect('travel-sign-in')
+	if request.method == 'POST':
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			return redirect('travel-sign-in')
 	return render(request, 'users/register.html', {"form":form, "title":"Sign up"})
+
 
 @csrf_exempt
 def processOrder(request):

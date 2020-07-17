@@ -28,7 +28,6 @@ class Customer(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 	first_name = models.CharField(max_length=100, null=True)
 	last_name = models.CharField(max_length=100, null=True)
-	
 
 	def __str__(self):
 		return self.first_name
@@ -38,7 +37,7 @@ class Booking(models.Model):
 	date_booked = models.DateTimeField(auto_now_add=True)
 	complete = models.BooleanField(default=False, null=True, blank=True)
 	transaction_id = models.CharField(max_length=100, null=True)
-
+	
 	def __str__(self):
 		return str(self.id)
 

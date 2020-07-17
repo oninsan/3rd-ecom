@@ -53,7 +53,7 @@
                 <input type="text" name="faddress" placeholder="Full Adress" class="form-control mb-2" required>
                 <input type="text" name="zipcode" placeholder="zipcode" class="form-control mb-2" required>
                 <label class="mr-3 font-weight-bold" for="bookingDate">Travel schedule:</label>
-                <input type="date" id="bookingDate" name="date" class="form-control mb-2" required>
+                <input type="date" id="bookingDate" name="date" class="form-control mb-2" placeholder="dd/mm/yyyy" required>
               {% endif %}
         
               <button type="submit d-flex justify-content-left" class="btn btn-outline-danger d-flex" id="submit" style="display: none !important;">Book now</button>
@@ -139,10 +139,7 @@
       })
       .then((data)=>{
         console.log('Success', data);
-        alert('Transaction Completed');
-
-        booking = {}
-        document.cookie = 'booking=' + JSON.stringify(booking) + ";domain=;path=/"
+        alert('Transaction Completed\n'+'Spent: Php'+'{{ object.booking_price }}');
         window.location.href = "{% url 'travel-home' %}"
       })
      }

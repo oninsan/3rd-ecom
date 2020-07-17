@@ -52,25 +52,6 @@
       }
     
     var csrftoken = getToken('csrftoken');
-
-    function getCookie(name){
-      var cookieArr = document.cookie.split(";");
-
-      for(var i; i<cookieArr.length; i++){
-        var cookiePair = cookieArr[i].split("=")
-        if(name == cookiePair[0].trim()){
-          return decodeURIComponent(cookiePair[1]);
-        }
-      }
-      return null
-    }
-    var booking = JSON.parse(getCookie('booking'))
-    if(booking == undefined){
-      booking = {}
-      console.log('booking was created')
-      document.cookie = 'booking=' + JSON.stringify(booking)
-    }
-    console.log('Booking:', booking)
   
   </script>
   </head>
