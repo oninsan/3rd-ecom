@@ -19,9 +19,12 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from travel import views as travel_views
 from django.conf.urls.static import static
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('photos/favicon.ico'))),
     path('sign_up/', travel_views.register, name="travel-sign-up"),
     path('sign_in/', auth_views.LoginView.as_view(template_name='travel/signin.html'), name="travel-sign-in"),
     path('sign_out/', auth_views.LogoutView.as_view(template_name='travel/signout.html'), name="travel-sign-out"),
