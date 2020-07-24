@@ -62,14 +62,11 @@
               </div>
               <div class="container mb-3 d-flex justify-content-center">
                 <div class="row">
-                  
-                  <div class="col-12">
-                    <button id="paypal" class="btn btn-outline-dark">Make Payment</button>
-                  </div>
                   <div id="paypal-button-container"></div>
                 </div>
               </div>
             </fieldset>
+            <button id="paypal" class="btn btn-dark btn-block">Make Payment</button>
           </form>
           
       </div>
@@ -83,7 +80,7 @@
         paypal_sdk.Buttons({
           style: {
                 color:  'blue',
-                shape:  'pill',
+                // shape:  'pill',
                 label:  'pay',
                 height: 40
             },
