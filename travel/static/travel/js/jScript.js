@@ -14,7 +14,8 @@ $("#up-bt").click(function(e){
 
 // Search Button Part
 $(".search-box input").addClass("form-control")
-$(".search-box input").attr("placeholder","Search Places")
+$("#id_destination__icontains").attr("placeholder","Search by Places")
+$("#id_continent__icontains").attr("placeholder","Search by Continents")
 
 
 // sign_up part
@@ -79,7 +80,21 @@ $(window).click(function(e){
 // sign_in part
 $(".signin input").addClass("form-control mb-3")
 $(".signin label").detach()
+$(".signin ul").css("list-style","none")
 $(".signin #id_username").attr("placeholder","Username")
 $(".signin #id_password").attr("placeholder","Password")
 
 
+
+// Filtering Part
+$("#id_continent__icontains").css("display","none")
+
+function selectColorChange(change){
+    if(change.value === "continent"){
+        $("#id_continent__icontains").fadeIn()
+        $("#id_destination__icontains").css("display","none")
+    }else{
+         $("#id_destination__icontains").fadeIn()
+        $("#id_continent__icontains").css("display","none")
+    }
+}

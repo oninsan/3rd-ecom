@@ -1,0 +1,100 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+       <title>Sign in</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script type="text/javascript" src="{% static 'travel/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'travel/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'travel/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'travel/icons/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'travel/icons/fontello/css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'travel_crm/css/style.css' %}">
+
+    <style type="text/css">
+      /*fonts here*/
+      @font-face{
+        font-family: "arcon";
+        src: url('{% static 'travel/fonts/arcon/Arcon-Regular.otf' %}');
+        font-style: normal;
+      }
+
+      body{
+        font-family: "arcon";
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Nav Part -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'travel-dashboard-users' %}"><i class="fa fa-toolbox"></i>Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'travel-home' %}" target="_blank">View Site <span class="sr-only">(current)</span></a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+          
+    <!-- /Nav Part -->
+
+    <!-- Choices Part -->
+    <div class="container mb-5" style="margin-top: 8rem;">
+      <div class="row">
+        <div class="col-lg-4 rounded text-center" >
+          <div class="container shadow-lg pt-5 pb-5">
+            <h1><i class="fa fa-users"></i></h1>
+            <h4 class="text-dark">Users<span class="badge badge-dark badge-pill">10</span></h2>
+          </div>
+        </div>
+
+        <div class="col-lg-4 rounded text-center">
+          <div class="container shadow-lg pt-5 pb-5">
+            <h1><i class="fa fa-people-arrows"></i></h1>
+            <h4 class="text-dark">Visits<span class="badge badge-dark badge-pill">100</span></h2>
+          </div>
+        </div>
+
+        <div class="col-lg-4 rounded text-center">
+          <div class="container shadow-lg pt-5 pb-5">
+            <h1><i class="fa fa-pencil-alt"></i></h1>
+            <h4 class="text-dark">Bookings<span class="badge badge-dark badge-pill">8</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Choices Part -->
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+
+    <div class="footer mb-3">
+      <p>All rights reserved &copy; 2020-2021</p>
+      <ul>
+        <li><p>Follow us on: </p></li>
+        <li><a href="#" class="text-dark"><i class="icon icon-facebook-squared"></i></a></li>
+        <li><a href="#" class="text-dark"><i class="icon icon-twitter-squared"></i></a></li>
+      </ul>
+    </div>
+
+    <!-- /Footer -->
+    <script type="text/javascript" src="{% static 'travel/js/jScript.js' %}"></script>
+  </body>
+</html> 

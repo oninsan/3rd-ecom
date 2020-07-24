@@ -56,6 +56,11 @@
             <!-- <input type="text" name="" placeholder="Search Places" class="form-control bg-light mb-0"> -->
             {{ filter.form }}
             <button type="submit" class="btn btn-outline-primary ml-2 btt"><i class="fa fa-search"></i></button>
+
+            <select type="backdrop" class="rounded form-control btt mr-auto" id="filter" onchange="selectColorChange(this)">
+              <option value="places" class="rounded">Places</option>
+              <option value="continent" class="rounded">Continent</option>
+            </select>
           </div>
         </form>
       </div>
@@ -79,7 +84,7 @@
                 </a>
               </div>
               <div class="card-body">
-                <strong class="font-weight-bold"><h3>{{ post.destination }}</h3></strong>
+                <strong class="font-weight-bold"><h3>{{ post.destination }} <span class="badge badge-{{ post.get_color_display }} badge-pill text-center"><small>{{ post.get_continent_display }}</small></span></h3></strong>
               </div>
             </div>
           </div>

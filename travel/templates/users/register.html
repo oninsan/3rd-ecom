@@ -5,7 +5,7 @@
 {% block content %}
 	        {% if user.is_authenticated %}
             <div class="d-lg-inline d-md-block my-2 my-lg-0">
-              <span class="badge badge-light badge-pill mr-lg-2"><h5 class="d-inline"><i class="fa fa-user-circle"></i>{{ user.username }}</h5></span>
+              <span class="btn btn-outline-light mr-lg-2"><h5 class="d-inline"><i class="fa fa-user-circle"></i>{{ user.username }}</h5></span>
             </div>
             <div class="d-inline my-2 my-lg-0">
               <a class="btn btn-danger text-clr" href="{% url 'travel-sign-out' %}"><i class="fa fa-sign-out-alt"></i> Sign out</a>

@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'travel.apps.TravelConfig',
+    'travel_crm.apps.TravelCrmConfig',
+
     'django_filters',
     'crispy_forms',
     'django.contrib.admin',

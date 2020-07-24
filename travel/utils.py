@@ -2,15 +2,19 @@ from .models import *
 import json
 
 def guestOrder(request, data):
-	print('Unauthenticated user..')
-
+	user = data['form']['user']
 	first_name = data['form']['fname']
 	last_name = data['form']['lname']
 
-	customer, created = Customer.objects.get_or_create(first_name=first_name, last_name=last_name)
+	customer, created = Customer.objects.get_or_create(user=user, first_name=first_name, last_name=last_name)
+	customer.user = user
 	customer.first_name = first_name
 	customer.last_name = last_name
 	customer.save()
 
-	booking = Booking.objects.create(customer=customer, complete=False)
+	if request.user.is_authenticated:
+		booking = Booking.objects.get_or_create(customer=customer, complete=False)
+	else:
+		booking = Booking.objects.create(customer=customer, complete=False)
+	
 	return customer, booking

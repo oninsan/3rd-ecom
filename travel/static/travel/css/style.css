@@ -69,13 +69,13 @@
 }
 
 .search-box input{
-  min-width: 92% !important;
+  min-width: 84.4% !important;
 }
 
 .search-box{
   margin: 0 auto;
   border-radius: 5px; 
-  width: 50rem;
+  width: 90rem;
 }
 
 .search-box label{
@@ -89,6 +89,24 @@
   .search-box input{
     min-width: 100% !important;
   }
+}
+
+@media(max-width: 1200px){
+  .search-box input{
+    min-width: 80.5% !important;
+ }
+}
+
+@media(max-width: 823px){
+  .search-box input{
+    min-width: 100% !important;
+ }
+}
+
+@media(max-width: 991px){
+  .search-box button{
+    display: none;
+ }
 }
 
 /*footer section*/

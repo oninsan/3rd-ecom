@@ -7,4 +7,5 @@ class OrderFilter(django_filters.FilterSet):
 		model = Place
 		fields = {
 			'destination':['icontains'],
+			'continent':['icontains'],
 		}

@@ -58,7 +58,7 @@ def processOrder(request):
 	data = json.loads(request.body)
 
 	if request.user.is_authenticated:
-		customer = request.user.customer
+		customer, booking = guestOrder(request ,data)
 		booking, created = Booking.objects.get_or_create(customer=customer, complete=False)
 
 		CustomerInfo.objects.create(

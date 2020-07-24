@@ -54,7 +54,11 @@
         <form class="form-inline" method="GET" action="{% url 'travel-search' %}"> 
           <div class="container bg-light mb-5 mt-5 p-1 search-box" >
             {{ filter.form }}
-            <button type="submit" class="btn btn-outline-primary ml-2 btt"><i class="fa fa-search"></i></button>
+            <select type="backdrop" class="rounded form-control btt mr-auto" id="filter" onchange="selectColorChange(this)">
+              <option value="places" class="rounded">Places</option>
+              <option value="continent" class="rounded">Continent</option>
+            </select>
+            <button type="submit" class="btn btn-outline-primary btt"><i class="fa fa-search"></i></button>
           </div>
         </form>
       </div>
@@ -78,7 +82,7 @@
                 </a>
               </div>
               <div class="card-body">
-                <strong class="font-weight-bold"><h3><a class="text-dark" href="{% url 'destination-detail' post.id %}">{{ post.destination }}</a></h3></strong>
+                <strong class="font-weight-bold"><h3><a class="text-dark" href="{% url 'destination-detail' post.id %}">{{ post.destination }} <span class="badge badge-{{ post.get_color_display }} badge-pill"><small>{{ post.get_continent_display }}</small></span></a></h3></strong>
               </div>
             </div>
           </div>
