@@ -89,12 +89,12 @@ $(".signin #id_password").attr("placeholder","Password")
 // Filtering Part
 $("#id_continent__icontains").css("display","none")
 
-function selectColorChange(change){
+function selectFilterChange(change){
     if(change.value === "continent"){
         $("#id_continent__icontains").fadeIn()
         $("#id_destination__icontains").css("display","none")
     }else{
          $("#id_destination__icontains").fadeIn()
-        $("#id_continent__icontains").css("display","none")
+         $("#id_continent__icontains").css("display","none")
     }
 }

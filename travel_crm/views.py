@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.views.generic import ListView
 from travel.models import *
 
+
 # Create your views here.
 @method_decorator(staff_member_required, name='dispatch')
 class DashboardUsers(ListView):
@@ -12,10 +13,9 @@ class DashboardUsers(ListView):
 	template_name = 'travel_crm/dashboard-users.html'
 	context_object_name = 'posts'
 	extra_context = {
-		'title':'Dashboard',
+		'title':'Users',
 		'users':User.objects.all()
 	}
-	ordering = ['-date']
 
 @method_decorator(staff_member_required, name='dispatch')
 class DashboardCustomers(ListView):
@@ -23,7 +23,7 @@ class DashboardCustomers(ListView):
 	template_name = 'travel_crm/dashboard-customers.html'
 	context_object_name = 'customers'
 	extra_context = {
-		'title':'Dashboard'
+		'title':'Customers'
 	}
 
 @method_decorator(staff_member_required, name='dispatch')
@@ -32,7 +32,7 @@ class DashboardBookings(ListView):
 	template_name = 'travel_crm/dashboard-bookings.html'
 	context_object_name = 'bookings'
 	extra_context = {
-		'title':'Dashboard'
+		'title':'Bookings'
 	}
 
 @method_decorator(staff_member_required, name='dispatch')
@@ -41,7 +41,7 @@ class DashboardCustomerInfos(ListView):
 	template_name = 'travel_crm/dashboard-customer-infos.html'
 	context_object_name = 'customerinfos'
 	extra_context = {
-		'title':'Dashboard'
+		'title':'Customer Infos'
 	}
 
 @method_decorator(staff_member_required, name='dispatch')
@@ -50,5 +50,5 @@ class DashboardPlaces(ListView):
 	template_name = 'travel_crm/dashboard-places.html'
 	context_object_name = 'places'
 	extra_context = {
-		'title':'Dashboard'
+		'title':'Places'
 	}

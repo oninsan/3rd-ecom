@@ -50,11 +50,12 @@
           </div>
         </div>
       </div>
+      
       <div class="col-12 search-box">
         <form class="form-inline" method="GET" action="{% url 'travel-search' %}"> 
           <div class="container bg-light mb-5 mt-5 p-1 search-box" >
             {{ filter.form }}
-            <select type="backdrop" class="rounded form-control btt mr-auto" id="filter" onchange="selectColorChange(this)">
+            <select type="backdrop" class="rounded form-control btt mr-auto" id="filter" onchange="selectFilterChange(this)">
               <option value="places" class="rounded">Places</option>
               <option value="continent" class="rounded">Continent</option>
             </select>

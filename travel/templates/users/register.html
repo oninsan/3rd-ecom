@@ -20,7 +20,7 @@
 
   <div class="container login-section mt-5 mb-5">
       <div class="row">
-        <div class="col-12">
+        <div class="col-lg-4">
           <form class="form-signin signup" style="margin-top: 25px;" method="POST">
             <h1 class="h3 mb-3 font-weight-normal form-text">Sign up now</h1>
             {% csrf_token %}
@@ -31,9 +31,42 @@
           </form>
         </div>
 
-       <!--  <div class="col-sm-12 col-md-12 col-lg-8 rounded background">
+        <div class="col-lg-8 col-md-12 col-sm-12 background rounded">
+          <div class="showcase rounded" style="margin-top: 55px !important; background-image: url('{% static 'travel/photos/dark-ripple.jpg' %}')">
+            <div class="container">
+              <div class="col-12 carousel slide" id="carouselIndicators" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                </ol>
 
-        </div> -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <h2 class="text-center text-light display-2">Travel now while you're young. We offer a lot of discount opportunities.</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <h2 class="text-center text-light display-2">You'll have a 20% discount if you sign up, up to this first week of july.</h2>
+                  </div>
+                  <div class="carousel-item">
+                    <h2 class="text-center text-light display-2">Sign up now to get a discount coupon. What are you waiting for?</h2>
+                    
+                  </div>
+
+                  <div class="container mt-3">
+                    <a class="carousel-control-prev mt-3" href="#carouselIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next pt-3" href="#carouselIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  <!-- /Showcase part -->
       </div>
     </div>
 {% endblock content %}

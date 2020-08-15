@@ -55,12 +55,6 @@ class Booking(models.Model):
 	def __str__(self):
 		return str(self.id)
 
-	# @property
-	# def get_booking_items(self):
-	# 	bookings = self.booking_set.all()
-	# 	total = sum([item.quantity for item in bookings])
-	# 	return total
-
 class CustomerInfo(models.Model):
 	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
 	booking = models.ForeignKey(Booking, on_delete=models.SET_NULL, blank=True, null=True)

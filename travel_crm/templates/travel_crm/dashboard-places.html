@@ -18,7 +18,6 @@
 	              <th>Ids</th>
 	              <th>Destinations</th>
 	              <th>Continent</th>
-	              <th>Continent Color</th>
 	              <th>Booking Price</th>
 	              <th>Description</th>
 	              <th>Image</th>
@@ -30,10 +29,9 @@
 		            	<td>{{ place.id }}</td>
 		            	<td>{{ place.destination }}</td>
 		            	<td>{{ place.get_continent_display }}</td>
-		              <td>{{ place.get_color_display }}</td>
-		              <td>Php{{ place.booking_price }}</td>
-		              <td>{{ place.description }}</td>
-		              <td><img src="{{ place.imgURL }}" class="img-fluid" style="width: 80px; height: 45px;"></td>
+		                <td>Php{{ place.booking_price }}</td>
+		                <td>{{ place.description }}</td>
+		                <td><img src="{{ place.imgURL }}" class="img-fluid" style="width: 80px; height: 45px;"></td>
 		            </tr>
 	            {% endfor %}
 	          </tbody>
