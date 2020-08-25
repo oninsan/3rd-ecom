@@ -35,7 +35,7 @@ $(".signup #hint_id_password2").detach()
 $(".signup #hint_id_username").detach()
 //$(".errorlist li").addClass("fa fa-info-circle text-warning shadow-lg")
 $(".signup #id_username").attr("placeholder","Username")
-$(".signup #id_first_name").attr("autofocus","")
+$(".signup #id_first_name").attr("autofocus")
 $(".signup #id_username").removeAttr("autofocus")
 $(".signup #id_email").attr("placeholder","Email")
 $(".signup #id_password1").attr("placeholder","Password")
@@ -84,10 +84,15 @@ $(".signin ul").css("list-style","none")
 $(".signin #id_username").attr("placeholder","Username")
 $(".signin #id_password").attr("placeholder","Password")
 
-
+$('.form-signin #id_email').attr('placeholder','Email Address')
 
 // Filtering Part
 $("#id_continent__icontains").css("display","none")
+
+//Password reset Part
+$('#id_new_password1').attr('placeholder','New Password')
+$('#id_new_password2').attr('placeholder','Confirm Password')
+$('.controls ul').detach()
 
 function selectFilterChange(change){
     if(change.value === "continent"){
